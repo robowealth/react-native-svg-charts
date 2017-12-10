@@ -39,6 +39,8 @@ Most of the charts are implemented with [knobs](https://github.com/storybooks/st
 Clone the repo and run the following:
 
 ```bash
+cd example
+
 yarn
 
 # for iOS
