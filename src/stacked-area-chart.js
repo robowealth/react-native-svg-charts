@@ -11,11 +11,19 @@ import Path from './animated-path'
 class AreaStack extends PureComponent {
 
     static extractDataPoints(data, keys, order = shape.stackOrderNone, offset = shape.stackOffsetNone) {
-        const series = shape.stack()
+        const shaped = shape.stack()
             .keys(keys)
             .order(order)
             .offset(offset)
             (data)
+        const series = shaped.map(d => d.map(c => {
+          const e = []
+          e[0] = 0
+          e[1] = c[1] - c[0]
+          e.data = c.data
+          return e
+        }))
+
 
         //double merge arrays to extract just the values
         return array.merge(array.merge(series))
@@ -66,11 +74,18 @@ class AreaStack extends PureComponent {
             return <View style={ style }/>
         }
 
-        const series = shape.stack()
+        const shaped = shape.stack()
             .keys(keys)
             .order(order)
             .offset(offset)
             (data)
+        const series = shaped.map(d => d.map(c => {
+          const e = []
+          e[0] = 0
+          e[1] = c[1] - c[0]
+          e.data = c.data
+          return e
+        }))
 
         //double merge arrays to extract just the values
         const values = array.merge(array.merge(series))
