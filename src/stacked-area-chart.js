@@ -159,7 +159,7 @@ class AreaStack extends PureComponent {
                                 return renderDecorator({ x, y, index, value: serie[ index ][ 1 ] })
                             })
                         }) }
-                        { extras.map((item, index) => renderExtra({ item, x, y, index, width, height })) }
+                        { extras.map((item, index) => item({x, y, width, height, index})) }
                     </Svg>
                 </View>
             </View>
